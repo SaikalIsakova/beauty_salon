@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v2/order")
-@Api
+@Api(tags = "Запись")
 public class OrderController {
 
     @Autowired

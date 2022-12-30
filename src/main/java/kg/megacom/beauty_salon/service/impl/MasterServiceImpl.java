@@ -43,4 +43,9 @@ public class MasterServiceImpl implements MasterService {
     public MasterDto find(Long id) {
         return mapper.toDto(rep.findMasterScheduleById(id));
     }
+
+    @Override
+    public List<MasterDto> findBySalonId(Long id) {
+        return mapper.toDtos(rep.findMasterBySalonId(id));
+    }
 }

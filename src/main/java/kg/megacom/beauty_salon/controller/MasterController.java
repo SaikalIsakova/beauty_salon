@@ -51,4 +51,9 @@ public class MasterController {
         return service.find(id);
     }
 
+    @GetMapping("/find/master/by/salon")
+    List<MasterDto> findMasterBySalon(@RequestParam Long id){
+        return service.findBySalonId(id);
+    }
+
 }
