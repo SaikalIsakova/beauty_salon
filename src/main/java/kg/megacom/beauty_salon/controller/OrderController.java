@@ -44,9 +44,9 @@ public class OrderController {
         return service.delete(id);
     }
 
-    @GetMapping("/create")
-    OrderDto create(@RequestParam String name, @RequestParam String surname, @RequestParam String phoneNumber, @RequestParam String email, @RequestParam Long masterId){
 
-        return service.createOrder(name, surname, phoneNumber, email, masterId);
-}
+   @PostMapping("/save/order")
+    String createOrder(@RequestParam Long clientId,@RequestParam Long masterId){
+        return service.create(clientId,masterId);
+ }
 }

@@ -2,7 +2,6 @@ package kg.megacom.beauty_salon.service.impl;
 
 import kg.megacom.beauty_salon.dao.MasterRep;
 import kg.megacom.beauty_salon.mappers.MasterMapper;
-import kg.megacom.beauty_salon.models.Master;
 import kg.megacom.beauty_salon.models.dto.MasterDto;
 import kg.megacom.beauty_salon.service.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +39,8 @@ public class MasterServiceImpl implements MasterService {
     }
 
     @Override
-    public MasterDto find(Long id) {
-        return mapper.toDto(rep.findMasterScheduleById(id));
+    public List<MasterDto> findScheduleByMasterId(Long id) {
+        return mapper.toDtos(rep.findScheduleByMasterId(id));
     }
 
     @Override

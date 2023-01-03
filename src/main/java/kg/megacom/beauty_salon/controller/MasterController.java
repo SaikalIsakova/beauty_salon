@@ -3,7 +3,6 @@ package kg.megacom.beauty_salon.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import kg.megacom.beauty_salon.mappers.MasterMapper;
-import kg.megacom.beauty_salon.models.MasterSchedule;
 import kg.megacom.beauty_salon.models.dto.MasterDto;
 import kg.megacom.beauty_salon.service.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +46,9 @@ public class MasterController {
     }
 
     @GetMapping("/find")
-    MasterDto find(@RequestParam Long id){
-        return service.find(id);
+    @ApiOperation("График мастера")
+   List <MasterDto> find(@RequestParam Long id){
+        return service.findScheduleByMasterId(id);
     }
 
     @GetMapping("/find/master/by/salon")

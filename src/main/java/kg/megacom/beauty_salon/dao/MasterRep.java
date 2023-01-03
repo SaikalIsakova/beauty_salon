@@ -10,8 +10,8 @@ import java.util.List;
 @Repository
 public interface MasterRep extends JpaRepository<Master,Long> {
 
-    @Query("select m from Master m inner join MasterSchedule s on s.id=:id where s.id=m.schedule.id")
-    Master findMasterScheduleById(Long id);
+    @Query("select s from MasterSchedule s inner join Master m on s.id=:id where s.id=m.schedule.id")
+    List<Master> findScheduleByMasterId(Long id);
 
     @Query("select m from Master m inner join Salon s on m.salon.id=:salonId")
     List<Master> findMasterBySalonId(Long salonId);

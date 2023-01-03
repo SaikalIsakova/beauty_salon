@@ -23,7 +23,6 @@ public class MasterSchedule {
     Date startTime;
     @Temporal(TemporalType.TIME)
     Date endTime;
-
     @Enumerated(EnumType.STRING)
     WorkDayEnum workDay;
 

@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface OrderService extends BaseService<OrderDto>{
 
-    OrderDto createOrder(String name,String surname,String phoneNumber,String email,Long masterId);
+    String create(Long clientId,Long masterId);
 }
