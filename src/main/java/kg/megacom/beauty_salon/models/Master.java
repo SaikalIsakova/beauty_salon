@@ -19,6 +19,7 @@ public class Master {
     Long id;
     String name;
     String surname;
+    boolean active;
     @ManyToOne
     @JoinColumn(name="salon_id")
     Salon salon;

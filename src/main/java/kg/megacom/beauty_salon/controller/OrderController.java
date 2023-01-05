@@ -8,6 +8,7 @@ import kg.megacom.beauty_salon.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -46,7 +47,7 @@ public class OrderController {
 
 
    @PostMapping("/save/order")
-    String createOrder(@RequestParam Long clientId,@RequestParam Long masterId){
-        return service.create(clientId,masterId);
+    String createOrder(@RequestParam Long clientId,@RequestParam Long masterId,@RequestParam String appDate) throws ParseException {
+        return service.create(clientId,masterId,appDate);
  }
 }

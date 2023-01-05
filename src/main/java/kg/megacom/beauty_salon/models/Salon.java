@@ -18,5 +18,5 @@ public class Salon {
     Long id;
     String name;
     String address;
-    String phoneNumber;
+    boolean active;
 }

@@ -6,5 +6,4 @@ public enum MasterWorkTypeEnum {
     MAKE_UP,
     LASHMAKER,
     EYEBROW
-
 }

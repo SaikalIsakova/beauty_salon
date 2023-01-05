@@ -5,7 +5,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,21 +18,20 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     Date addDate;
-    Date updateDate;
     Date appointmentDate;
+    boolean active;
     @Enumerated(EnumType.STRING)
     OrderStatusEnum status;
-
     @ManyToOne
     @JoinColumn(name="client_id")
     Client client;
-
     @ManyToOne
     @JoinColumn(name="master_id")
     Master master;
-
-
-
-
-
+    @PrePersist
+    protected void onCreate() {
+        status = OrderStatusEnum.CONFIRM;
+        addDate = new Date();
+        active=true;
+    }
 }

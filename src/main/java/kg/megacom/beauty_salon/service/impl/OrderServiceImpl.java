@@ -1,23 +1,19 @@
 package kg.megacom.beauty_salon.service.impl;
 
-import kg.megacom.beauty_salon.dao.ClientRep;
 import kg.megacom.beauty_salon.dao.MasterRep;
 import kg.megacom.beauty_salon.dao.OrderRep;
-import kg.megacom.beauty_salon.dao.SalonRep;
 import kg.megacom.beauty_salon.mappers.ClientMapper;
 import kg.megacom.beauty_salon.mappers.MasterMapper;
 import kg.megacom.beauty_salon.mappers.OrderMapper;
-import kg.megacom.beauty_salon.mappers.SalonMapper;
 import kg.megacom.beauty_salon.models.dto.ClientDto;
 import kg.megacom.beauty_salon.models.dto.MasterDto;
 import kg.megacom.beauty_salon.models.dto.OrderDto;
-import kg.megacom.beauty_salon.models.dto.SalonDto;
-import kg.megacom.beauty_salon.models.enums.OrderStatusEnum;
-import kg.megacom.beauty_salon.models.request.OrderRequest;
 import kg.megacom.beauty_salon.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 @Service
@@ -58,11 +54,15 @@ public class OrderServiceImpl implements OrderService {
     //Этот метод пока непрвильный,не понимаю что он должен возвращать
 
     @Override
-    public String create(Long clientId, Long masterId) {
+    public String create(Long clientId, Long masterId,String appDate) throws ParseException {
         OrderDto orderDto = new OrderDto();
         ClientDto clientDto=new ClientDto();
         clientDto.setId(clientId);
         orderDto.setClient(clientMapper.toEntity(clientDto));
+        orderDto.setAddDate(new Date());
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        Date docDate= format.parse(appDate);
+        orderDto.setAppointmentDate(docDate);
         MasterDto masterDto =new MasterDto();
         masterRep.findAll();
         masterDto.setId(masterId);
